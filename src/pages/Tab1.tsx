@@ -1,22 +1,43 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonButtons,
+  IonMenuButton,
+} from "@ionic/react";
+import "./Tab1.css";
+
+import { personAddSharp } from "ionicons/icons";
 
 const Tab1: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonButtons slot="end">
+            <IonMenuButton autoHide={false}></IonMenuButton>
+          </IonButtons>
+          <IonTitle>Operaciones</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
-          </IonToolbar>
+      <IonContent color="medium" fullscreen>
+        <IonHeader className="ion-padding">
+          <IonTitle color="danger">
+            <p>Agregar Nuevo Cliente</p>
+          </IonTitle>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonGrid fixed={true}>
+          <IonRow>
+            <IonCol>1</IonCol>
+            <IonCol>2</IonCol>
+            <IonCol>3</IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

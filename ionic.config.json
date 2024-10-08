@@ -1,0 +1,7 @@
+{
+  "name": "gest-rem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

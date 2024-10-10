@@ -10,15 +10,10 @@ import {
   IonItemOption,
   IonIcon,
 } from "@ionic/react";
-import {
-  caretForwardOutline,
-  pencilSharp,
-  personCircle,
-  trash,
-} from "ionicons/icons";
+import { pencilSharp, personCircle, trash } from "ionicons/icons";
 
 const ListClient = () => {
-  const { clientes } = useStorage();
+  const { clientes, addCliente, eliminarCliente } = useStorage();
   // Esto es para editar el cliente seleccionado
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
@@ -26,8 +21,8 @@ const ListClient = () => {
 
   const ionList = useRef(null as any);
 
-  const eliminarCliente = async (id: string) => {
-    //   Eliminar Cliente
+  const eliminarClienteHandler = async (id: number) => {
+    await eliminarCliente(id);
   };
 
   return (
@@ -52,7 +47,11 @@ const ListClient = () => {
               </IonItem>
               {/* Eliminar Cliente */}
               <IonItemOptions slot="end">
-                <IonItemOption color="danger" expandable={true}>
+                <IonItemOption
+                  color="danger"
+                  expandable={true}
+                  onClick={() => eliminarClienteHandler(cliente.id)}
+                >
                   <IonIcon slot="icon-only" icon={trash}></IonIcon>
                 </IonItemOption>
               </IonItemOptions>

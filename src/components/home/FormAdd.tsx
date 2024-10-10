@@ -17,6 +17,8 @@ import {
   person,
   phonePortrait,
   caretDownCircle,
+  sendSharp,
+  warning,
 } from "ionicons/icons";
 import { useStorage } from "../../hooks/useStorage";
 import "./FormAdd.css";
@@ -27,13 +29,18 @@ function FormAdd() {
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState(0.0);
+  const [nombre_mensajero, setNombre_mensajero] = useState("");
+  const [telefono_mensajero, setTelefono_mensajero] = useState("");
 
   // Agregar Cliente
   const createCliente = async () => {
     const newCliente = {
+      id: clientes.length + 1,
       nombre_y_apellidos,
       numero_de_telefono,
       monto_que_envia,
+      nombre_mensajero,
+      telefono_mensajero,
     };
     addCliente(newCliente);
   };
@@ -134,7 +141,46 @@ function FormAdd() {
             <IonLabel color="warning">Mensajero que Entrega</IonLabel>
           </IonItem>
           <div className="ion-padding" slot="content">
-            Second Content
+            {/* Nombre del Mensajero */}
+            <IonInput
+              labelPlacement="stacked"
+              label="Mensajero Destinado"
+              placeholder="Entregado por..."
+              color="warning"
+              value={nombre_mensajero}
+              onIonChange={(e) => {
+                if (e.detail.value !== null && e.detail.value !== undefined) {
+                  setNombre_mensajero(e.detail.value);
+                }
+              }}
+            >
+              <IonIcon
+                slot="start"
+                color={warning}
+                icon={sendSharp}
+                aria-hidden="true"
+              ></IonIcon>
+            </IonInput>
+            {/* Teléfono del Mensajero */}
+            <IonInput
+              labelPlacement="stacked"
+              label="Teléfono del Mensajero"
+              placeholder="No. de Contacto del Mensajero"
+              color="warning"
+              value={telefono_mensajero}
+              onIonChange={(e) => {
+                if (e.detail.value !== null && e.detail.value !== undefined) {
+                  setTelefono_mensajero(e.detail.value);
+                }
+              }}
+            >
+              <IonIcon
+                slot="start"
+                color={warning}
+                icon={phonePortrait}
+                aria-hidden="true"
+              ></IonIcon>
+            </IonInput>
           </div>
         </IonAccordion>
       </IonAccordionGroup>

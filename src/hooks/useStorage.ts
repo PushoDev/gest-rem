@@ -9,9 +9,12 @@ export function useStorage() {
   const [store, setStore] = useState<Storage>();
   const [clientes, setClientes] = useState([
     {
+      id: 1,
       nombre_y_apellidos: "",
       numero_de_telefono: "",
       monto_que_envia: 0.0,
+      nombre_mensajero: "",
+      telefono_mensajero: "",
     },
   ]);
 
@@ -26,9 +29,13 @@ export function useStorage() {
 
       const storedClientes = (await store.get(TODOS_KEY)) ?? [
         {
+          id: 1,
           nombre_y_apellidos: "",
           numero_de_telefono: "",
           monto_que_envia: 0.0,
+
+          nombre_mensajero: "",
+          telefono_mensajero: "",
         },
       ];
       setClientes(storedClientes);
@@ -38,14 +45,22 @@ export function useStorage() {
 
   // Crear Cliente
   const addCliente = async (cliente: {
+    id: number;
     nombre_y_apellidos: string;
     numero_de_telefono: string;
     monto_que_envia: number;
+
+    nombre_mensajero: string;
+    telefono_mensajero: string;
   }) => {
     const newCliente = {
+      id: clientes.length + 1,
       nombre_y_apellidos: cliente.nombre_y_apellidos,
       numero_de_telefono: cliente.numero_de_telefono,
       monto_que_envia: cliente.monto_que_envia,
+
+      nombre_mensajero: cliente.nombre_mensajero,
+      telefono_mensajero: cliente.telefono_mensajero,
     };
 
     setClientes([...clientes, newCliente]);
@@ -54,10 +69,16 @@ export function useStorage() {
   };
 
   // Eliminar Cliente
+  const eliminarCliente = async (id: number) => {
+    const newClientes = clientes.filter((cliente) => cliente.id !== id);
+    store?.set(TODOS_KEY, newClientes);
+    setClientes(newClientes);
+  };
 
   // Retornar o Devolver
   return {
     clientes,
     addCliente,
+    eliminarCliente,
   };
 }

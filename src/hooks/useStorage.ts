@@ -53,6 +53,8 @@ export function useStorage() {
     store?.set(TODOS_KEY, clientes);
   };
 
+  // Eliminar Cliente
+
   // Retornar o Devolver
   return {
     clientes,

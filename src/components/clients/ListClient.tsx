@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./ListClient.css";
 import { useStorage } from "../../hooks/useStorage";
 import {
@@ -10,7 +10,12 @@ import {
   IonItemOption,
   IonIcon,
 } from "@ionic/react";
-import { caretForwardOutline, pencilSharp, trash } from "ionicons/icons";
+import {
+  caretForwardOutline,
+  pencilSharp,
+  personCircle,
+  trash,
+} from "ionicons/icons";
 
 const ListClient = () => {
   const { clientes } = useStorage();
@@ -19,15 +24,25 @@ const ListClient = () => {
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState("");
 
-  console.log(clientes);
+  const ionList = useRef(null as any);
+
+  const eliminarCliente = async (id: string) => {
+    //   Eliminar Cliente
+  };
 
   return (
     <>
       <div>
-        <IonList inset={true}>
+        <IonList inset={true} ref={ionList}>
           {clientes.map((cliente, index) => (
             <IonItemSliding key={index}>
-              <IonItem button detail={true} detailIcon={caretForwardOutline}>
+              {/* Editar Cliente */}
+              <IonItemOptions side="start">
+                <IonItemOption color="primary">
+                  <IonIcon slot="icon-only" icon={pencilSharp}></IonIcon>
+                </IonItemOption>
+              </IonItemOptions>
+              <IonItem button detail={true} detailIcon={personCircle}>
                 <IonLabel>
                   <h3 key={index}>{cliente.nombre_y_apellidos}</h3>
                   <p key={index}>
@@ -35,10 +50,8 @@ const ListClient = () => {
                   </p>
                 </IonLabel>
               </IonItem>
+              {/* Eliminar Cliente */}
               <IonItemOptions slot="end">
-                <IonItemOption color="primary">
-                  <IonIcon slot="icon-only" icon={pencilSharp}></IonIcon>
-                </IonItemOption>
                 <IonItemOption color="danger" expandable={true}>
                   <IonIcon slot="icon-only" icon={trash}></IonIcon>
                 </IonItemOption>

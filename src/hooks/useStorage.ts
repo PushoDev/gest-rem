@@ -29,19 +29,7 @@ export function useStorage() {
     initStorage();
   }, []);
 
-  const agregarCliente = async (cliente: any) => {
-    const storedClientes = await store.get(TODOS_KEY);
-    if (storedClientes) {
-      storedClientes.push(cliente);
-    } else {
-      storedClientes = [cliente];
-    }
-    await store.set(TODOS_KEY, storedClientes);
-    setCliente(cliente);
-  };
-
   return {
     cliente,
-    agregarCliente,
   };
 }

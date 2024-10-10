@@ -13,22 +13,11 @@ import { cardSharp, person, phonePortrait } from "ionicons/icons";
 import { useStorage } from "../../hooks/useStorage";
 
 function FormAdd() {
-  const { cliente, agregarCliente } = useStorage();
+  const { cliente } = useStorage();
+  // Datos del Formulario a llenar...
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState("");
-
-  const agregar = async () => {
-    const cliente = {
-      nombre_y_apellidos,
-      numero_de_telefono,
-      monto_que_envia,
-    };
-    await agregarCliente(cliente);
-    setNombre_y_apellidos("");
-    setNumero_de_telefono("");
-    setMonto_que_envia("");
-  };
 
   return (
     <>
@@ -95,12 +84,7 @@ function FormAdd() {
           </IonInput>
         </IonCardContent>
       </IonCard>
-      <IonButton
-        color="success"
-        shape="round"
-        className="ion-padding"
-        onClick={agregar}
-      >
+      <IonButton color="success" shape="round" className="ion-padding">
         Agregar
       </IonButton>
     </>

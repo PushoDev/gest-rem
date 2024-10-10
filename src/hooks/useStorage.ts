@@ -5,11 +5,13 @@ const TODOS_KEY = "mis-contactos";
 
 export function useStorage() {
   const [store, setStore] = useState<Storage>();
-  const [cliente, setCliente] = useState({
-    nombre_y_apellidos: "",
-    numero_de_telefono: "",
-    monto_que_envia: "",
-  });
+  const [clientes, setClientes] = useState([
+    {
+      nombre_y_apellidos: "",
+      numero_de_telefono: "",
+      monto_que_envia: 0.0,
+    },
+  ]);
 
   useEffect(() => {
     const initStorage = async () => {
@@ -19,17 +21,33 @@ export function useStorage() {
       const store = await newStorage.create();
       setStore(store);
 
-      const storedCliente = (await store.get(TODOS_KEY)) || {
-        nombre_y_apellidos: "",
-        numero_de_telefono: "",
-        monto_que_envia: "",
-      };
-      setCliente(storedCliente);
+      const storedClientes = (await store.get(TODOS_KEY)) ?? [
+        {
+          nombre_y_apellidos: "",
+          numero_de_telefono: "",
+          monto_que_envia: 0.0,
+        },
+      ];
+      setClientes(storedClientes);
     };
     initStorage();
   }, []);
 
+  // Crear Cliente
+  const addCliente = async (cliente) => {
+    const newCliente = {
+      nombre_y_apellidos: cliente.nombre_y_apellidos,
+      numero_de_telefono: cliente.numero_de_telefono,
+      monto_que_envia: cliente.monto_que_envia,
+    };
+
+    setClientes([...clientes, newCliente]);
+    console.log(cliente);
+    store?.set(TODOS_KEY, clientes);
+  };
+
   return {
-    cliente,
+    clientes,
+    addCliente,
   };
 }

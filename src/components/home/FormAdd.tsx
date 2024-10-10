@@ -11,13 +11,24 @@ import {
 } from "@ionic/react";
 import { cardSharp, person, phonePortrait } from "ionicons/icons";
 import { useStorage } from "../../hooks/useStorage";
+import "./FormAdd.css";
 
 function FormAdd() {
-  const { cliente } = useStorage();
+  const { clientes, addCliente } = useStorage();
   // Datos del Formulario a llenar...
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState("");
+
+  // Agregar Cliente
+  const createCliente = async () => {
+    const newCliente = {
+      nombre_y_apellidos,
+      numero_de_telefono,
+      monto_que_envia,
+    };
+    addCliente(newCliente);
+  };
 
   return (
     <>
@@ -39,7 +50,7 @@ function FormAdd() {
             fill="solid"
             placeholder="Credenciales de quien Envía"
             value={nombre_y_apellidos}
-            onIonChange={(e) => setNombre_y_apellidos(e.detail.value!)}
+            onIonChange={(e) => setNombre_y_apellidos(e.detail.value)}
           >
             <IonIcon
               slot="start"
@@ -56,7 +67,7 @@ function FormAdd() {
             fill="solid"
             placeholder="Teléfono del Cliente"
             value={numero_de_telefono}
-            onIonChange={(e) => setNumero_de_telefono(e.detail.value!)}
+            onIonChange={(e) => setNumero_de_telefono(e.detail.value)}
           >
             <IonIcon
               slot="start"
@@ -71,9 +82,9 @@ function FormAdd() {
             color="success"
             labelPlacement="floating"
             fill="solid"
-            placeholder="Cantidad de Activos que envía"
+            placeholder="0.0"
             value={monto_que_envia}
-            onIonChange={(e) => setMonto_que_envia(e.detail.value!)}
+            onIonChange={(e) => setMonto_que_envia(e.detail.value)}
           >
             <IonIcon
               slot="start"
@@ -84,7 +95,13 @@ function FormAdd() {
           </IonInput>
         </IonCardContent>
       </IonCard>
-      <IonButton color="success" shape="round" className="ion-padding">
+      {/* Botones de acciones */}
+      <IonButton
+        color="primary"
+        shape="round"
+        className="ion-padding"
+        onClick={createCliente}
+      >
         Agregar
       </IonButton>
     </>

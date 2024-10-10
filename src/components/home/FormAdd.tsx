@@ -18,7 +18,7 @@ function FormAdd() {
   // Datos del Formulario a llenar...
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
-  const [monto_que_envia, setMonto_que_envia] = useState("");
+  const [monto_que_envia, setMonto_que_envia] = useState(0.0);
 
   // Agregar Cliente
   const createCliente = async () => {
@@ -50,7 +50,7 @@ function FormAdd() {
             fill="solid"
             placeholder="Credenciales de quien Envía"
             value={nombre_y_apellidos}
-            onIonChange={(e) => setNombre_y_apellidos(e.detail.value)}
+            onIonChange={(e) => setNombre_y_apellidos(e.detail.value!)}
           >
             <IonIcon
               slot="start"
@@ -67,7 +67,7 @@ function FormAdd() {
             fill="solid"
             placeholder="Teléfono del Cliente"
             value={numero_de_telefono}
-            onIonChange={(e) => setNumero_de_telefono(e.detail.value)}
+            onIonChange={(e) => setNumero_de_telefono(e.detail.value!)}
           >
             <IonIcon
               slot="start"
@@ -84,7 +84,12 @@ function FormAdd() {
             fill="solid"
             placeholder="0.0"
             value={monto_que_envia}
-            onIonChange={(e) => setMonto_que_envia(e.detail.value)}
+            onIonChange={(e) => {
+              const value = e.detail.value;
+              if (value !== null && value !== undefined) {
+                setMonto_que_envia(parseFloat(value));
+              }
+            }}
           >
             <IonIcon
               slot="start"

@@ -4,9 +4,11 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonSearchbar,
 } from "@ionic/react";
 import "./Tab2.css";
 import ListClient from "../components/clients/ListClient";
+import { searchSharp } from "ionicons/icons";
 
 const Tab2: React.FC = () => {
   return (
@@ -15,8 +17,14 @@ const Tab2: React.FC = () => {
         <IonToolbar color="primary">
           <IonTitle>Listado de Clientes</IonTitle>
         </IonToolbar>
+        <IonSearchbar
+          searchIcon={searchSharp}
+          color={"medium"}
+          animated={true}
+          placeholder="Búsqueda de Clientes"
+        ></IonSearchbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
         <ListClient />
       </IonContent>
     </IonPage>

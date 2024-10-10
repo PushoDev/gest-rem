@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Storage } from "@ionic/storage";
 
+// Nombre de la Tabla
 const TODOS_KEY = "mis-contactos";
 
+// Estructura de la Tabla
 export function useStorage() {
   const [store, setStore] = useState<Storage>();
   const [clientes, setClientes] = useState([
@@ -16,6 +18,7 @@ export function useStorage() {
   useEffect(() => {
     const initStorage = async () => {
       const newStorage = new Storage({
+        // Nombre de la Base de Datos
         name: "gestrem",
       });
       const store = await newStorage.create();
@@ -34,7 +37,11 @@ export function useStorage() {
   }, []);
 
   // Crear Cliente
-  const addCliente = async (cliente) => {
+  const addCliente = async (cliente: {
+    nombre_y_apellidos: string;
+    numero_de_telefono: string;
+    monto_que_envia: number;
+  }) => {
     const newCliente = {
       nombre_y_apellidos: cliente.nombre_y_apellidos,
       numero_de_telefono: cliente.numero_de_telefono,
@@ -46,6 +53,7 @@ export function useStorage() {
     store?.set(TODOS_KEY, clientes);
   };
 
+  // Retornar o Devolver
   return {
     clientes,
     addCliente,

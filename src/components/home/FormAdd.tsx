@@ -32,8 +32,16 @@ function FormAdd() {
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState(0.0);
+  // Mensajero que entrega
   const [nombre_mensajero, setNombre_mensajero] = useState("");
   const [telefono_mensajero, setTelefono_mensajero] = useState("");
+  // Famiiar que recive
+  const [telefono_familiar, setTelefonoFamiliar] = useState("");
+  const [nombre_familiar, setNombreFamiliar] = useState("");
+  const [tipo_transaccion, setTipoTransaccion] = useState("");
+  const [tipo_moneda, setTipoMoneda] = useState("");
+  const [numero_tarjeta, setNumeroTarjeta] = useState("");
+  const [monto_recibido, setMontoRecibido] = useState("");
 
   // Agregar Cliente
   const createCliente = async () => {
@@ -44,6 +52,12 @@ function FormAdd() {
       monto_que_envia,
       nombre_mensajero,
       telefono_mensajero,
+      telefono_familiar,
+      nombre_familiar,
+      tipo_transaccion,
+      tipo_moneda,
+      numero_tarjeta,
+      monto_recibido,
     };
     addCliente(newCliente);
   };

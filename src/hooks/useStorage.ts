@@ -15,8 +15,21 @@ export function useStorage() {
       monto_que_envia: 0.0,
       nombre_mensajero: "",
       telefono_mensajero: "",
+      telefono_familiar: "",
+      nombre_familiar: "",
+      tipo_transaccion: "",
+      tipo_moneda: "",
+      numero_tarjeta: "",
+      monto_recibido: "",
     },
   ]);
+
+  const [telefono_familiar, setTelefonoFamiliar] = useState("");
+  const [nombre_familiar, setNombreFamiliar] = useState("");
+  const [tipo_transaccion, setTipoTransaccion] = useState("");
+  const [tipo_moneda, setTipoMoneda] = useState("");
+  const [numero_tarjeta, setNumeroTarjeta] = useState("");
+  const [monto_recibido, setMontoRecibido] = useState("");
 
   useEffect(() => {
     const initStorage = async () => {
@@ -33,9 +46,16 @@ export function useStorage() {
           nombre_y_apellidos: "",
           numero_de_telefono: "",
           monto_que_envia: 0.0,
-
+          // Mensajero que entrega
           nombre_mensajero: "",
           telefono_mensajero: "",
+          // Datos familiar que recive
+          telefono_familiar: "",
+          nombre_familiar: "",
+          tipo_transaccion: "",
+          tipo_moneda: "",
+          numero_tarjeta: "",
+          monto_recibido: "",
         },
       ];
       setClientes(storedClientes);
@@ -52,6 +72,12 @@ export function useStorage() {
 
     nombre_mensajero: string;
     telefono_mensajero: string;
+    telefono_familiar: string;
+    nombre_familiar: string;
+    tipo_transaccion: string;
+    tipo_moneda: string;
+    numero_tarjeta: string;
+    monto_recibido: string;
   }) => {
     const newCliente = {
       id: clientes.length + 1,
@@ -61,6 +87,12 @@ export function useStorage() {
 
       nombre_mensajero: cliente.nombre_mensajero,
       telefono_mensajero: cliente.telefono_mensajero,
+      telefono_familiar: cliente.telefono_familiar,
+      nombre_familiar: cliente.nombre_familiar,
+      tipo_transaccion: cliente.tipo_transaccion,
+      tipo_moneda: cliente.tipo_moneda,
+      numero_tarjeta: cliente.numero_tarjeta,
+      monto_recibido: cliente.monto_recibido,
     };
 
     setClientes([...clientes, newCliente]);

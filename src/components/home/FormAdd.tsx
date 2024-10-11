@@ -11,6 +11,9 @@ import {
   IonAccordionGroup,
   IonItem,
   IonLabel,
+  IonSelect,
+  IonSelectOption,
+  IonText,
 } from "@ionic/react";
 import {
   cardSharp,
@@ -127,7 +130,80 @@ function FormAdd() {
             <IonLabel color="success">Persona que Recive</IonLabel>
           </IonItem>
           <div className="ion-padding" slot="content">
-            First Content
+            {/* Telefono del familiar */}
+            <IonInput
+              label="No. de Teléfono"
+              color="success"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Contacto de quien Recibe"
+            ></IonInput>
+            <br />
+
+            {/* Nombre y Apellidos del familiar */}
+            <IonInput
+              label="No. de Teléfono"
+              color="success"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Contacto de quien Recibe"
+            ></IonInput>
+            <br />
+
+            {/* Acciones para el familiar */}
+            <IonItem>
+              <IonSelect placeholder="Seleccione">
+                <div slot="label">
+                  <IonText color="success">Tipo de Transacción</IonText>
+                </div>
+                <IonSelectOption value="efectivo">Efectivo</IonSelectOption>
+                <IonSelectOption value="transferencia">
+                  Transferencia
+                </IonSelectOption>
+              </IonSelect>
+            </IonItem>
+            <br />
+            {/* Encaso de Escoger, condiciones */}
+            {/* opción Efectivo */}
+            <IonItem>
+              <IonSelect placeholder="Seleccione">
+                <div slot="label">
+                  <IonText color="danger">Tipo de Moneda</IonText>
+                </div>
+                <IonSelectOption value="usd">USD</IonSelectOption>
+                <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+              </IonSelect>
+            </IonItem>
+            <br />
+
+            {/* Opción Transferencia */}
+            <IonItem>
+              <IonSelect placeholder="Seleccione">
+                <div slot="label">
+                  <IonText color="danger">Tipo de Moneda</IonText>
+                </div>
+                <IonSelectOption value="mlc">MLC</IonSelectOption>
+                <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+              </IonSelect>
+            </IonItem>
+            <IonInput
+              label="Número de Tarjeta"
+              color="success"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="ingrese Número de Tarjeta"
+            ></IonInput>
+            <br />
+
+            {/* monto que Recive */}
+            <IonInput
+              label="Cantidad de Efectivo"
+              color="success"
+              labelPlacement="floating"
+              fill="outline"
+              placeholder="Monto que Recive"
+            ></IonInput>
+            <br />
           </div>
         </IonAccordion>
 

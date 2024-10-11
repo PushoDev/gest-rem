@@ -151,6 +151,8 @@ function FormAdd() {
               labelPlacement="floating"
               fill="outline"
               placeholder="Contacto de quien Recibe"
+              value={telefono_familiar}
+              onIonChange={(e) => setTelefonoFamiliar(e.detail.value!)}
             ></IonInput>
             <br />
 
@@ -161,12 +163,18 @@ function FormAdd() {
               labelPlacement="floating"
               fill="outline"
               placeholder="Contacto de quien Recibe"
+              value={nombre_familiar}
+              onIonChange={(e) => setNombreFamiliar(e.detail.value!)}
             ></IonInput>
             <br />
 
             {/* Acciones para el familiar */}
             <IonItem>
-              <IonSelect placeholder="Seleccione">
+              <IonSelect
+                placeholder="Seleccione"
+                value={tipo_transaccion}
+                onIonChange={(e) => setTipoTransaccion(e.detail.value!)}
+              >
                 <div slot="label">
                   <IonText color="success">Tipo de Transacción</IonText>
                 </div>
@@ -180,7 +188,11 @@ function FormAdd() {
             {/* Encaso de Escoger, condiciones */}
             {/* opción Efectivo */}
             <IonItem>
-              <IonSelect placeholder="Seleccione">
+              <IonSelect
+                placeholder="Seleccione"
+                value={tipo_moneda}
+                onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+              >
                 <div slot="label">
                   <IonText color="danger">Tipo de Moneda</IonText>
                 </div>
@@ -192,7 +204,11 @@ function FormAdd() {
 
             {/* Opción Transferencia */}
             <IonItem>
-              <IonSelect placeholder="Seleccione">
+              <IonSelect
+                placeholder="Seleccione"
+                value={tipo_moneda}
+                onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+              >
                 <div slot="label">
                   <IonText color="danger">Tipo de Moneda</IonText>
                 </div>
@@ -206,6 +222,8 @@ function FormAdd() {
               labelPlacement="floating"
               fill="outline"
               placeholder="ingrese Número de Tarjeta"
+              value={numero_tarjeta}
+              onIonChange={(e) => setNumeroTarjeta(e.detail.value!)}
             ></IonInput>
             <br />
 
@@ -216,6 +234,8 @@ function FormAdd() {
               labelPlacement="floating"
               fill="outline"
               placeholder="Monto que Recive"
+              value={monto_recibido}
+              onIonChange={(e) => setMontoRecibido(e.detail.value!)}
             ></IonInput>
             <br />
           </div>

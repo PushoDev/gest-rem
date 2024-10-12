@@ -14,6 +14,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonText,
+  IonAlert,
 } from "@ionic/react";
 import {
   cardSharp,
@@ -28,7 +29,6 @@ import "./FormAdd.css";
 
 function FormAdd() {
   const { clientes, addCliente } = useStorage();
-  // Datos del Formulario a llenar...
   const [nombre_y_apellidos, setNombre_y_apellidos] = useState("");
   const [numero_de_telefono, setNumero_de_telefono] = useState("");
   const [monto_que_envia, setMonto_que_envia] = useState(0.0);
@@ -42,6 +42,7 @@ function FormAdd() {
   // Mensajero que entrega
   const [nombre_mensajero, setNombre_mensajero] = useState("");
   const [telefono_mensajero, setTelefono_mensajero] = useState("");
+  const [mostrarAlerta, setMostrarAlerta] = useState(false);
 
   // Agregar Cliente
   const createCliente = async () => {
@@ -62,6 +63,7 @@ function FormAdd() {
       telefono_mensajero,
     };
     addCliente(newCliente);
+    setMostrarAlerta(true);
   };
 
   const formatTarjeta = (tarjeta: string): string => {
@@ -344,6 +346,21 @@ function FormAdd() {
           Cancelar
         </IonButton>
       </IonCard>
+
+      {mostrarAlerta && (
+        <IonAlert
+          header="Cliente agregado con éxito"
+          message="El cliente ha sido agregado con éxito a la base de datos"
+          buttons={[
+            {
+              text: "Aceptar",
+              handler: () => {
+                setMostrarAlerta(false);
+              },
+            },
+          ]}
+        />
+      )}
     </>
   );
 }

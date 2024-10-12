@@ -64,6 +64,13 @@ function FormAdd() {
     addCliente(newCliente);
   };
 
+  const formatTarjeta = (tarjeta: string): string => {
+    const tarjetaFormateada = tarjeta
+      .replace(/\D/g, "")
+      .replace(/(\d{4})/g, "$1-");
+    return tarjetaFormateada;
+  };
+
   return (
     <>
       <IonCard>
@@ -246,9 +253,11 @@ function FormAdd() {
                   labelPlacement="floating"
                   fill="outline"
                   placeholder="ingrese Número de Tarjeta"
-                  value={numero_tarjeta}
-                  onIonChange={(e) => setNumeroTarjeta(e.detail.value!)}
-                ></IonInput>
+                  value={formatTarjeta(numero_tarjeta)}
+                  onIonInput={(e) =>
+                    setNumeroTarjeta(formatTarjeta(e.target.value as string))
+                  }
+                />
                 <br />
 
                 {/* monto que Recive */}

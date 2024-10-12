@@ -76,61 +76,63 @@ function FormAdd() {
           </IonCardSubtitle>
         </IonCardHeader>
         {/* Formulario para el Cliente */}
-        <IonInput
-          label="Nombre y Apellidos"
-          color="success"
-          labelPlacement="floating"
-          fill="solid"
-          placeholder="Credenciales de quien Envía"
-          value={nombre_y_apellidos}
-          onIonChange={(e) => setNombre_y_apellidos(e.detail.value!)}
-        >
-          <IonIcon
-            slot="start"
+        <div>
+          <IonInput
+            label="Nombre y Apellidos"
             color="success"
-            icon={person}
-            aria-hidden="true"
-          ></IonIcon>
-        </IonInput>
-        <br />
-        <IonInput
-          label="Número de Teléfono"
-          color="success"
-          labelPlacement="floating"
-          fill="solid"
-          placeholder="Teléfono del Cliente"
-          value={numero_de_telefono}
-          onIonChange={(e) => setNumero_de_telefono(e.detail.value!)}
-        >
-          <IonIcon
-            slot="start"
+            labelPlacement="floating"
+            fill="solid"
+            placeholder="Credenciales de quien Envía"
+            value={nombre_y_apellidos}
+            onIonChange={(e) => setNombre_y_apellidos(e.detail.value!)}
+          >
+            <IonIcon
+              slot="start"
+              color="success"
+              icon={person}
+              aria-hidden="true"
+            ></IonIcon>
+          </IonInput>
+          <br />
+          <IonInput
+            label="Número de Teléfono"
             color="success"
-            icon={phonePortrait}
-            aria-hidden="true"
-          ></IonIcon>
-        </IonInput>
-        <br />
-        <IonInput
-          label="Monto que Envía"
-          color="success"
-          labelPlacement="floating"
-          fill="solid"
-          placeholder="0.0"
-          value={monto_que_envia}
-          onIonChange={(e) => {
-            const value = e.detail.value;
-            if (value !== null && value !== undefined) {
-              setMonto_que_envia(parseFloat(value));
-            }
-          }}
-        >
-          <IonIcon
-            slot="start"
+            labelPlacement="floating"
+            fill="solid"
+            placeholder="Teléfono del Cliente"
+            value={numero_de_telefono}
+            onIonChange={(e) => setNumero_de_telefono(e.detail.value!)}
+          >
+            <IonIcon
+              slot="start"
+              color="success"
+              icon={phonePortrait}
+              aria-hidden="true"
+            ></IonIcon>
+          </IonInput>
+          <br />
+          <IonInput
+            label="Monto que Envía"
             color="success"
-            icon={cardSharp}
-            aria-hidden="true"
-          ></IonIcon>
-        </IonInput>
+            labelPlacement="floating"
+            fill="solid"
+            placeholder="0.0"
+            value={monto_que_envia}
+            onIonChange={(e) => {
+              const value = e.detail.value;
+              if (value !== null && value !== undefined) {
+                setMonto_que_envia(parseFloat(value));
+              }
+            }}
+          >
+            <IonIcon
+              slot="start"
+              color="success"
+              icon={cardSharp}
+              aria-hidden="true"
+            ></IonIcon>
+          </IonInput>
+        </div>
       </IonCard>
 
       <hr />
@@ -160,11 +162,11 @@ function FormAdd() {
 
             {/* Nombre y Apellidos del familiar */}
             <IonInput
-              label="No. de Teléfono"
+              label="Nombre del Familiar o Amigo"
               color="success"
               labelPlacement="floating"
               fill="outline"
-              placeholder="Contacto de quien Recibe"
+              placeholder="Nombre del Familiar o Amigo"
               value={nombre_familiar}
               onIonChange={(e) => setNombreFamiliar(e.detail.value!)}
             ></IonInput>
@@ -187,59 +189,81 @@ function FormAdd() {
               </IonSelect>
             </IonItem>
             <br />
-            {/* Encaso de Escoger, condiciones */}
-            {/* opción Efectivo */}
-            <IonItem>
-              <IonSelect
-                placeholder="Seleccione"
-                value={tipo_moneda}
-                onIonChange={(e) => setTipoMoneda(e.detail.value!)}
-              >
-                <div slot="label">
-                  <IonText color="danger">Tipo de Moneda</IonText>
-                </div>
-                <IonSelectOption value="usd">USD</IonSelectOption>
-                <IonSelectOption value="cup">CUP - MN</IonSelectOption>
-              </IonSelect>
-            </IonItem>
-            <br />
+            {tipo_transaccion === "efectivo" ? (
+              <>
+                {/* Encaso de Escoger, condiciones */}
+                {/* opción Efectivo */}
+                <IonItem>
+                  <IonSelect
+                    placeholder="Seleccione"
+                    value={tipo_moneda}
+                    onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+                  >
+                    <div slot="label">
+                      <IonText color="danger">Tipo de Moneda</IonText>
+                    </div>
+                    <IonSelectOption value="usd">USD</IonSelectOption>
+                    <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+                  </IonSelect>
+                </IonItem>
+                <br />
 
-            {/* Opción Transferencia */}
-            <IonItem>
-              <IonSelect
-                placeholder="Seleccione"
-                value={tipo_moneda}
-                onIonChange={(e) => setTipoMoneda(e.detail.value!)}
-              >
-                <div slot="label">
-                  <IonText color="danger">Tipo de Moneda</IonText>
-                </div>
-                <IonSelectOption value="mlc">MLC</IonSelectOption>
-                <IonSelectOption value="cup">CUP - MN</IonSelectOption>
-              </IonSelect>
-            </IonItem>
-            <IonInput
-              label="Número de Tarjeta"
-              color="success"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="ingrese Número de Tarjeta"
-              value={numero_tarjeta}
-              onIonChange={(e) => setNumeroTarjeta(e.detail.value!)}
-            ></IonInput>
-            <br />
+                {/* monto que Recive */}
+                <IonInput
+                  label="Cantidad de Efectivo"
+                  color="success"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Monto que Recive"
+                  value={monto_recibido}
+                  onIonChange={(e) => setMontoRecibido(e.detail.value!)}
+                ></IonInput>
+                <br />
+              </>
+            ) : tipo_transaccion === "transferencia" ? (
+              <>
+                {/* Encaso de Escoger, condiciones */}
+                {/* opción Transferencia */}
+                <IonItem>
+                  <IonSelect
+                    placeholder="Seleccione"
+                    value={tipo_moneda}
+                    onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+                  >
+                    <div slot="label">
+                      <IonText color="danger">Tipo de Moneda</IonText>
+                    </div>
+                    <IonSelectOption value="mlc">MLC</IonSelectOption>
+                    <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+                  </IonSelect>
+                </IonItem>
+                <br />
 
-            {/* monto que Recive */}
-            <IonInput
-              label="Cantidad de Efectivo"
-              color="success"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Monto que Recive"
-              value={monto_recibido}
-              onIonChange={(e) => setMontoRecibido(e.detail.value!)}
-            ></IonInput>
-            <br />
+                {/* Número de Tarjeta */}
+                <IonInput
+                  label="Número de Tarjeta"
+                  color="success"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="ingrese Número de Tarjeta"
+                  value={numero_tarjeta}
+                  onIonChange={(e) => setNumeroTarjeta(e.detail.value!)}
+                ></IonInput>
+                <br />
+
+                {/* monto que Recive */}
+                <IonInput
+                  label="Cantidad de Efectivo"
+                  color="success"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Monto que Recive"
+                  value={monto_recibido}
+                  onIonChange={(e) => setMontoRecibido(e.detail.value!)}
+                ></IonInput>
+                <br />
+              </>
+            ) : null}
           </div>
         </IonAccordion>
 

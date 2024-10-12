@@ -75,7 +75,7 @@ function FormAdd() {
 
   return (
     <>
-      <IonCard>
+      <IonCard className="container">
         <IonCardHeader>
           <IonCardTitle color="danger">
             Datos Generales del Cliente
@@ -142,198 +142,198 @@ function FormAdd() {
             ></IonIcon>
           </IonInput>
         </div>
-      </IonCard>
+        {/* </IonCard> */}
 
-      <hr />
+        <hr />
 
-      <IonAccordionGroup>
-        {/* Formulario para el Familiar */}
-        <IonAccordion
-          value="first"
-          toggleIcon={caretDownCircle}
-          toggleIconSlot="start"
-        >
-          <IonItem slot="header" color="light">
-            <IonLabel color="success">Persona que Recive</IonLabel>
-          </IonItem>
-          <div className="ion-padding" slot="content">
-            {/* Telefono del familiar */}
-            <IonInput
-              label="No. de Teléfono"
-              color="success"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Contacto de quien Recibe"
-              value={telefono_familiar}
-              onIonChange={(e) => setTelefonoFamiliar(e.detail.value!)}
-            ></IonInput>
-            <br />
-
-            {/* Nombre y Apellidos del familiar */}
-            <IonInput
-              label="Nombre del Familiar o Amigo"
-              color="success"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="Nombre del Familiar o Amigo"
-              value={nombre_familiar}
-              onIonChange={(e) => setNombreFamiliar(e.detail.value!)}
-            ></IonInput>
-            <br />
-
-            {/* Acciones para el familiar */}
-            <IonItem>
-              <IonSelect
-                placeholder="Seleccione"
-                value={tipo_transaccion}
-                onIonChange={(e) => setTipoTransaccion(e.detail.value!)}
-              >
-                <div slot="label">
-                  <IonText color="success">Tipo de Transacción</IonText>
-                </div>
-                <IonSelectOption value="efectivo">Efectivo</IonSelectOption>
-                <IonSelectOption value="transferencia">
-                  Transferencia
-                </IonSelectOption>
-              </IonSelect>
+        <IonAccordionGroup>
+          {/* Formulario para el Familiar */}
+          <IonAccordion
+            value="first"
+            toggleIcon={caretDownCircle}
+            toggleIconSlot="start"
+          >
+            <IonItem slot="header" color="light">
+              <IonLabel color="success">Persona que Recive</IonLabel>
             </IonItem>
-            <br />
-            {tipo_transaccion === "efectivo" ? (
-              <>
-                {/* Encaso de Escoger, condiciones */}
-                {/* opción Efectivo */}
-                <IonItem>
-                  <IonSelect
-                    placeholder="Seleccione"
-                    value={tipo_moneda}
-                    onIonChange={(e) => setTipoMoneda(e.detail.value!)}
-                  >
-                    <div slot="label">
-                      <IonText color="danger">Tipo de Moneda</IonText>
-                    </div>
-                    <IonSelectOption value="usd">USD</IonSelectOption>
-                    <IonSelectOption value="cup">CUP - MN</IonSelectOption>
-                  </IonSelect>
-                </IonItem>
-                <br />
+            <div className="ion-padding" slot="content">
+              {/* Telefono del familiar */}
+              <IonInput
+                label="No. de Teléfono"
+                color="success"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="Contacto de quien Recibe"
+                value={telefono_familiar}
+                onIonChange={(e) => setTelefonoFamiliar(e.detail.value!)}
+              ></IonInput>
+              <br />
 
-                {/* monto que Recive */}
-                <IonInput
-                  label="Cantidad de Efectivo"
-                  color="success"
-                  labelPlacement="floating"
-                  fill="outline"
-                  placeholder="Monto que Recive"
-                  value={monto_recibido}
-                  onIonChange={(e) => setMontoRecibido(e.detail.value!)}
-                ></IonInput>
-                <br />
-              </>
-            ) : tipo_transaccion === "transferencia" ? (
-              <>
-                {/* Encaso de Escoger, condiciones */}
-                {/* opción Transferencia */}
-                <IonItem>
-                  <IonSelect
-                    placeholder="Seleccione"
-                    value={tipo_moneda}
-                    onIonChange={(e) => setTipoMoneda(e.detail.value!)}
-                  >
-                    <div slot="label">
-                      <IonText color="danger">Tipo de Moneda</IonText>
-                    </div>
-                    <IonSelectOption value="mlc">MLC</IonSelectOption>
-                    <IonSelectOption value="cup">CUP - MN</IonSelectOption>
-                  </IonSelect>
-                </IonItem>
-                <br />
+              {/* Nombre y Apellidos del familiar */}
+              <IonInput
+                label="Nombre del Familiar o Amigo"
+                color="success"
+                labelPlacement="floating"
+                fill="outline"
+                placeholder="Nombre del Familiar o Amigo"
+                value={nombre_familiar}
+                onIonChange={(e) => setNombreFamiliar(e.detail.value!)}
+              ></IonInput>
+              <br />
 
-                {/* Número de Tarjeta */}
-                <IonInput
-                  label="Número de Tarjeta"
-                  color="success"
-                  labelPlacement="floating"
-                  fill="outline"
-                  placeholder="ingrese Número de Tarjeta"
-                  value={formatTarjeta(numero_tarjeta)}
-                  onIonInput={(e) =>
-                    setNumeroTarjeta(formatTarjeta(e.target.value as string))
+              {/* Acciones para el familiar */}
+              <IonItem>
+                <IonSelect
+                  placeholder="Seleccione"
+                  value={tipo_transaccion}
+                  onIonChange={(e) => setTipoTransaccion(e.detail.value!)}
+                >
+                  <div slot="label">
+                    <IonText color="success">Tipo de Transacción</IonText>
+                  </div>
+                  <IonSelectOption value="efectivo">Efectivo</IonSelectOption>
+                  <IonSelectOption value="transferencia">
+                    Transferencia
+                  </IonSelectOption>
+                </IonSelect>
+              </IonItem>
+              <br />
+              {tipo_transaccion === "efectivo" ? (
+                <>
+                  {/* Encaso de Escoger, condiciones */}
+                  {/* opción Efectivo */}
+                  <IonItem>
+                    <IonSelect
+                      placeholder="Seleccione"
+                      value={tipo_moneda}
+                      onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+                    >
+                      <div slot="label">
+                        <IonText color="danger">Tipo de Moneda</IonText>
+                      </div>
+                      <IonSelectOption value="usd">USD</IonSelectOption>
+                      <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+                    </IonSelect>
+                  </IonItem>
+                  <br />
+
+                  {/* monto que Recive */}
+                  <IonInput
+                    label="Cantidad de Efectivo"
+                    color="success"
+                    labelPlacement="floating"
+                    fill="outline"
+                    placeholder="Monto que Recive"
+                    value={monto_recibido}
+                    onIonChange={(e) => setMontoRecibido(e.detail.value!)}
+                  ></IonInput>
+                  <br />
+                </>
+              ) : tipo_transaccion === "transferencia" ? (
+                <>
+                  {/* Encaso de Escoger, condiciones */}
+                  {/* opción Transferencia */}
+                  <IonItem>
+                    <IonSelect
+                      placeholder="Seleccione"
+                      value={tipo_moneda}
+                      onIonChange={(e) => setTipoMoneda(e.detail.value!)}
+                    >
+                      <div slot="label">
+                        <IonText color="danger">Tipo de Moneda</IonText>
+                      </div>
+                      <IonSelectOption value="mlc">MLC</IonSelectOption>
+                      <IonSelectOption value="cup">CUP - MN</IonSelectOption>
+                    </IonSelect>
+                  </IonItem>
+                  <br />
+
+                  {/* Número de Tarjeta */}
+                  <IonInput
+                    label="Número de Tarjeta"
+                    color="success"
+                    labelPlacement="floating"
+                    fill="outline"
+                    placeholder="ingrese Número de Tarjeta"
+                    value={formatTarjeta(numero_tarjeta)}
+                    onIonInput={(e) =>
+                      setNumeroTarjeta(formatTarjeta(e.target.value as string))
+                    }
+                  />
+                  <br />
+
+                  {/* monto que Recive */}
+                  <IonInput
+                    label="Cantidad de Efectivo"
+                    color="success"
+                    labelPlacement="floating"
+                    fill="outline"
+                    placeholder="Monto que Recive"
+                    value={monto_recibido}
+                    onIonChange={(e) => setMontoRecibido(e.detail.value!)}
+                  ></IonInput>
+                  <br />
+                </>
+              ) : null}
+            </div>
+          </IonAccordion>
+
+          {/* Formulario para el Mensajero */}
+          <IonAccordion
+            value="second"
+            toggleIcon={caretDownCircle}
+            toggleIconSlot="start"
+          >
+            <IonItem slot="header" color="light">
+              <IonLabel color="warning">Mensajero que Entrega</IonLabel>
+            </IonItem>
+            <div className="ion-padding" slot="content">
+              {/* Nombre del Mensajero */}
+              <IonInput
+                labelPlacement="stacked"
+                label="Mensajero Destinado"
+                placeholder="Entregado por..."
+                color="warning"
+                value={nombre_mensajero}
+                onIonChange={(e) => {
+                  if (e.detail.value !== null && e.detail.value !== undefined) {
+                    setNombre_mensajero(e.detail.value);
                   }
-                />
-                <br />
+                }}
+              >
+                <IonIcon
+                  slot="start"
+                  color={warning}
+                  icon={sendSharp}
+                  aria-hidden="true"
+                ></IonIcon>
+              </IonInput>
+              {/* Teléfono del Mensajero */}
+              <IonInput
+                labelPlacement="stacked"
+                label="Teléfono del Mensajero"
+                placeholder="No. de Contacto del Mensajero"
+                color="warning"
+                value={telefono_mensajero}
+                onIonChange={(e) => {
+                  if (e.detail.value !== null && e.detail.value !== undefined) {
+                    setTelefono_mensajero(e.detail.value);
+                  }
+                }}
+              >
+                <IonIcon
+                  slot="start"
+                  color={warning}
+                  icon={phonePortrait}
+                  aria-hidden="true"
+                ></IonIcon>
+              </IonInput>
+            </div>
+          </IonAccordion>
+        </IonAccordionGroup>
 
-                {/* monto que Recive */}
-                <IonInput
-                  label="Cantidad de Efectivo"
-                  color="success"
-                  labelPlacement="floating"
-                  fill="outline"
-                  placeholder="Monto que Recive"
-                  value={monto_recibido}
-                  onIonChange={(e) => setMontoRecibido(e.detail.value!)}
-                ></IonInput>
-                <br />
-              </>
-            ) : null}
-          </div>
-        </IonAccordion>
+        {/* Botones de acciones */}
 
-        {/* Formulario para el Mensajero */}
-        <IonAccordion
-          value="second"
-          toggleIcon={caretDownCircle}
-          toggleIconSlot="start"
-        >
-          <IonItem slot="header" color="light">
-            <IonLabel color="warning">Mensajero que Entrega</IonLabel>
-          </IonItem>
-          <div className="ion-padding" slot="content">
-            {/* Nombre del Mensajero */}
-            <IonInput
-              labelPlacement="stacked"
-              label="Mensajero Destinado"
-              placeholder="Entregado por..."
-              color="warning"
-              value={nombre_mensajero}
-              onIonChange={(e) => {
-                if (e.detail.value !== null && e.detail.value !== undefined) {
-                  setNombre_mensajero(e.detail.value);
-                }
-              }}
-            >
-              <IonIcon
-                slot="start"
-                color={warning}
-                icon={sendSharp}
-                aria-hidden="true"
-              ></IonIcon>
-            </IonInput>
-            {/* Teléfono del Mensajero */}
-            <IonInput
-              labelPlacement="stacked"
-              label="Teléfono del Mensajero"
-              placeholder="No. de Contacto del Mensajero"
-              color="warning"
-              value={telefono_mensajero}
-              onIonChange={(e) => {
-                if (e.detail.value !== null && e.detail.value !== undefined) {
-                  setTelefono_mensajero(e.detail.value);
-                }
-              }}
-            >
-              <IonIcon
-                slot="start"
-                color={warning}
-                icon={phonePortrait}
-                aria-hidden="true"
-              ></IonIcon>
-            </IonInput>
-          </div>
-        </IonAccordion>
-      </IonAccordionGroup>
-
-      {/* Botones de acciones */}
-      <IonCard>
         <IonButton
           color="primary"
           shape="round"
@@ -346,21 +346,6 @@ function FormAdd() {
           Cancelar
         </IonButton>
       </IonCard>
-
-      {mostrarAlerta && (
-        <IonAlert
-          header="Cliente agregado con éxito"
-          message="El cliente ha sido agregado con éxito a la base de datos"
-          buttons={[
-            {
-              text: "Aceptar",
-              handler: () => {
-                setMostrarAlerta(false);
-              },
-            },
-          ]}
-        />
-      )}
     </>
   );
 }

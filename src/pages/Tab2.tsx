@@ -5,6 +5,7 @@ import {
   IonTitle,
   IonToolbar,
   IonSearchbar,
+  IonTabBar,
 } from "@ionic/react";
 import "./Tab2.css";
 import ListClient from "../components/clients/ListClient";
@@ -14,15 +15,9 @@ const Tab2: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="success">
           <IonTitle>Listado de Clientes</IonTitle>
         </IonToolbar>
-        <IonSearchbar
-          searchIcon={searchSharp}
-          color={"medium"}
-          animated={true}
-          placeholder="Búsqueda de Clientes"
-        ></IonSearchbar>
       </IonHeader>
       <IonContent>
         <ListClient />

@@ -7,19 +7,17 @@ import {
 } from "@ionic/react";
 import "./Tab3.css";
 import ConfiTest from "../components/config/ConfiTest";
-import TextConfig from "../components/config/TextConfig";
 
 const Tab3: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="danger">
           <IonTitle>Configuración</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <ConfiTest />
-        <TextConfig />
       </IonContent>
     </IonPage>
   );

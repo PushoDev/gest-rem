@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { cogSharp, listSharp, personAddSharp } from "ionicons/icons";
+import { clipboard, cogSharp, personAddSharp } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
@@ -73,7 +73,7 @@ const App: React.FC = () => {
               <IonLabel>Operaciones</IonLabel>
             </IonTabButton>
             <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon aria-hidden="true" icon={listSharp} />
+              <IonIcon aria-hidden="true" icon={clipboard} />
               <IonLabel>Listado</IonLabel>
             </IonTabButton>
             <IonTabButton tab="tab3" href="/tab3">

@@ -10,9 +10,12 @@ const TextConfig = () => {
         Created by: <b>Pusho.Dev</b>
       </p>
       <p>+5355572430</p>
+      <h6>bethocubans1990@hotmail.com</h6>
       <p>
         <b>Versión:</b> v.1.0.1
       </p>
+      <h6>Parte del Proyecto</h6>
+      <p>https://laglorietashop.com</p>
     </div>
   );
 };

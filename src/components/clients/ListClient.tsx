@@ -17,7 +17,7 @@ import {
   IonToolbar,
   IonTitle,
 } from "@ionic/react";
-import { pencilSharp, personCircle, trash } from "ionicons/icons";
+import { clipboardSharp, eyeSharp, trash } from "ionicons/icons";
 
 const ListClient = () => {
   const { clientes, eliminarCliente } = useStorage();
@@ -60,14 +60,14 @@ const ListClient = () => {
                     setIsOpen(true);
                   }}
                 >
-                  <IonIcon slot="icon-only" icon={pencilSharp}></IonIcon>
+                  <IonIcon slot="icon-only" icon={eyeSharp}></IonIcon>
                 </IonItemOption>
               </IonItemOptions>
 
               <IonItem
                 button
                 detail={true}
-                detailIcon={personCircle}
+                detailIcon={clipboardSharp}
                 id="present-alert"
               >
                 <IonLabel>

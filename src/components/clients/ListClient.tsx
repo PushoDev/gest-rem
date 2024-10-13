@@ -74,10 +74,13 @@ const ListClient = () => {
                 id="present-alert"
               >
                 <IonLabel>
+                  <p>Nombre del Cliente</p>
                   <h3 key={index}>{cliente.nombre_y_apellidos}</h3>
-                  <p key={index}>
-                    {cliente.numero_de_telefono} | {cliente.monto_que_envia}
-                  </p>
+                  <p>Número de Teléfono | Envió</p>
+                  <h3 key={index}>
+                    {cliente.numero_de_telefono} | $ {cliente.monto_que_envia}
+                    .00
+                  </h3>
                 </IonLabel>
               </IonItem>
               {/* Eliminar Cliente */}

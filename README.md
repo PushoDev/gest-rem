@@ -1,29 +1,35 @@
-# Gest-Rem
-================
+# Gest-Rem v 1.0.1
+---------------
 
-Aplicación móvil para gestionar remitentes de dinero
+Aplicación móvil para gestionar remesas de activos a familiares y amigos
+
+>[!NOTE]
+>#### _Read this in [other languages](https://github.com/PushoDev/gest-rem/README.us.md)._ <kbd>[<img title="Española" alt="Española" src="https://cdn.statically.io/gh/hjnilsson/country-flags/master/svg/es.svg" width="22">](README.md)</kbd> <kbd>[<img title="English" alt="Inglesa" src="https://cdn.statically.io/gh/hjnilsson/country-flags/master/svg/us.svg" width="22">](README.us.md)</kbd>
+
 
 ## Descripción
 ---------------
 
-La aplicación Gest-Rem es una herramienta para gestionar remitentes de dinero. Permite a los usuarios crear, editar y eliminar remitentes, así como visualizar la información de los remitentes.
+La aplicación Gest-Rem es una herramienta para gestionar remitentes de envío de Remesas para familiares y amigos. Permite a los usuarios crear, y eliminar remitentes, así como visualizar la información de los remitentes.
 
 ## Requisitos
 ------------
+>[!TIP]
+> * Android 10 o superior
+> * Ionic 6 o superior
+> * Capacitor 6 o superior
 
-* Android 10 o superior
-* Ionic 6 o superior
-* Capacitor 6 o superior
 
 ## Instrucciones de compilación
 -----------------------------
 
-Para compilar la aplicación, sigue estos pasos:
+>[!IMPORTANT]
+> * Para compilar la aplicación, sigue estos pasos:
+> 1. **Clona el repositorio**: Clona el repositorio de GitHub utilizando el comando `git clone https://github.com/PushoDev/gest-rem`.
+> 2. **Instala las dependencias**: Instala las dependencias necesarias utilizando el comando `npm install`.
+> 3. **Compila la aplicación**: Compila la aplicación utilizando el comando `ionic build android`.
+> 4. **Instala la aplicación**: Instala la aplicación en un dispositivo Android utilizando el comando `ionic cap run android`.
 
-1. **Clona el repositorio**: Clona el repositorio de GitHub utilizando el comando `git clone https://github.com/PushoDev/gest-rem`.
-2. **Instala las dependencias**: Instala las dependencias necesarias utilizando el comando `npm install`.
-3. **Compila la aplicación**: Compila la aplicación utilizando el comando `ionic build android`.
-4. **Instala la aplicación**: Instala la aplicación en un dispositivo Android utilizando el comando `ionic cap run android`.
 
 ## Instrucciones de ejecución
 ---------------------------

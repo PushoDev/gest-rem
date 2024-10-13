@@ -16,6 +16,9 @@ import {
   IonContent,
   IonToolbar,
   IonTitle,
+  IonCard,
+  IonCardTitle,
+  IonCardContent,
 } from "@ionic/react";
 import { clipboardSharp, eyeSharp, trash } from "ionicons/icons";
 
@@ -93,28 +96,116 @@ const ListClient = () => {
         <IonModal isOpen={isOpen}>
           <IonHeader>
             <IonToolbar>
-              <IonTitle>Ver Datos</IonTitle>
+              <IonTitle>Detalles del Cliente</IonTitle>
               <IonButtons slot="end">
-                <IonButton onClick={() => setIsOpen(false)}>Close</IonButton>
+                <IonButton onClick={() => setIsOpen(false)} color={"success"}>
+                  Aceptar
+                </IonButton>
               </IonButtons>
             </IonToolbar>
           </IonHeader>
-          <IonContent className="ion-padding">
-            <p>Nombre y Apellidos: {clienteSeleccionado.nombre_y_apellidos}</p>
-            <p>Numero de Telefono: {clienteSeleccionado.numero_de_telefono}</p>
-            <p>Monto que Envía: {clienteSeleccionado.monto_que_envia}</p>
-            <p>Nombre del Mensajero: {clienteSeleccionado.nombre_mensajero}</p>
-            <p>
-              Telefono del Mensajero: {clienteSeleccionado.telefono_mensajero}
-            </p>
-            <p>
-              Telefono del Familiar: {clienteSeleccionado.telefono_familiar}
-            </p>
-            <p>Nombre del Familiar: {clienteSeleccionado.nombre_familiar}</p>
-            <p>Tipo de Transacción: {clienteSeleccionado.tipo_transaccion}</p>
-            <p>Tipo de Moneda: {clienteSeleccionado.tipo_moneda}</p>
-            <p>Numero de Tarjeta: {clienteSeleccionado.numero_tarjeta}</p>
-            <p>Monto Recibido: {clienteSeleccionado.monto_recibido}</p>
+          <IonContent>
+            {/* Cliente que Envía */}
+            <IonCard>
+              <IonCardTitle className="ion-padding">
+                Cliente que Envía
+              </IonCardTitle>
+              <IonCardContent>
+                <IonList>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Nombre y Apellidos</p>
+                      <h2>{clienteSeleccionado.nombre_y_apellidos}</h2>
+                    </IonLabel>
+                  </IonItem>
+
+                  <IonItem>
+                    <IonLabel>
+                      <p>Número de Contacto</p>
+                      <h2>{clienteSeleccionado.numero_de_telefono}</h2>
+                    </IonLabel>
+                  </IonItem>
+
+                  <IonItem>
+                    <IonLabel>
+                      <p>Monto que Envía</p>
+                      <h2>${clienteSeleccionado.monto_que_envia}.00</h2>
+                    </IonLabel>
+                  </IonItem>
+                </IonList>
+              </IonCardContent>
+            </IonCard>
+            {/* Cliente que Recive */}
+            <IonCard>
+              <IonCardTitle className="ion-padding">
+                Persona que Recive
+              </IonCardTitle>
+              <IonCardContent>
+                <IonList>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Nombre del Familiar: </p>
+                      <h2>{clienteSeleccionado.nombre_familiar}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Telefono del Familiar: </p>
+                      <h2>{clienteSeleccionado.telefono_familiar}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Tipo de Transacción: </p>
+                      <h2>{clienteSeleccionado.tipo_transaccion}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Monto Recibido:</p>
+                      <h2>{clienteSeleccionado.monto_recibido}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Tipo de Moneda: </p>
+                      <h2>{clienteSeleccionado.tipo_moneda}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Numero de Tarjeta:</p>
+                      <h2> {clienteSeleccionado.numero_tarjeta}</h2>
+                    </IonLabel>
+                  </IonItem>
+                </IonList>
+              </IonCardContent>
+            </IonCard>
+            {/* Mensajero que Entrega */}
+            <IonCard>
+              <IonCardTitle className="ion-padding">
+                Mensajero que Entrega
+              </IonCardTitle>
+              <IonCardContent>
+                <IonList>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Nombre del Mensajero: </p>
+                      <h2>{clienteSeleccionado.nombre_mensajero}</h2>
+                    </IonLabel>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>
+                      <p>Telefono del Mensajero: </p>
+                      <h2>{clienteSeleccionado.telefono_mensajero}</h2>
+                    </IonLabel>
+                  </IonItem>
+                </IonList>
+                <p></p>
+                <p></p>
+                <p></p>
+              </IonCardContent>
+            </IonCard>
           </IonContent>
         </IonModal>
       </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Storage } from "@ionic/storage";
+import { Drivers, Storage } from "@ionic/storage";
+import cordovaSQLiteDriver, * as CordovaSQLiteDriver from "localforage-cordovasqlitedriver";
 
 // Nombre de la Tabla
 const TODOS_KEY = "mis-contactos";
@@ -36,7 +37,16 @@ export function useStorage() {
       const newStorage = new Storage({
         // Nombre de la Base de Datos
         name: "gestrem",
+        // Driver SQLite
+        driverOrder: [
+          CordovaSQLiteDriver._driver,
+          Drivers.IndexedDB,
+          Drivers.LocalStorage,
+        ],
       });
+
+      await newStorage.defineDriver(CordovaSQLiteDriver);
+
       const store = await newStorage.create();
       setStore(store);
 
